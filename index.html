@@ -1,11 +1,201 @@
-<html>
-    <head>
-        <p>shijuny web design</p>
-    </head>
-    <body>
-        <h1><strong>WHAT IS LIFR in college</strong></h1>
-        <div>
-            <p></p>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黃泉 (Acheron) - 崩壞：星穹鐵道 角色培育全攻略</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 固定頁首 Header -->
+    <header>
+        <div class="logo">HONKAI: STAR RAIL</div>
+        <nav>
+            <a href="https://hsr.hoyoverse.com/" target="_blank">星穹鐵道官網</a>
+            <a href="https://hsr.hoyoverse.com/news" target="_blank">最新活動</a>
+            <a href="#about">簡介</a>
+            <a href="#stats">屬性養成</a>
+            <a href="#gear">光錐遺器</a>
+            <a href="#team">最佳陣容</a>
+            <a href="#relations">人物關係</a>
+        </nav>
+    </header>
+
+    <!-- 主視覺 Banner (Hero) -->
+    <section class="hero">
+        <div class="hero-title">
+            <span class="hero-subtitle">IX - THE NIHILITY | 雷屬性</span>
+            <h1>黃泉 (Acheron)</h1>
+            <p>自稱「巡海遊俠」的神秘旅人。攜長刀獨行銀河，漫漫黃泉，刀鳴之際即是終局。</p>
+            <p class="hero-quote">「——我踏過無數荒蕪，只為為逝者吟誦渡歌。」</p>
         </div>
-    </body>
+    </section>
+
+    <!-- 01 / 角色詳細簡介 -->
+    <section id="about" class="content-section">
+        <span class="section-tag">01 / CHARACTER PROFILE</span>
+        <h2>紅塵過客，斬盡虛無</h2>
+        <div class="grid-container">
+            <div class="text-column">
+                <p>黃泉（Acheron）是一位性格淡漠寡言的刀客。她身佩一把極度沉重的長刀，常以刀鞘招架戰鬥，不輕易拔刀出鞘。</p>
+                <p>其核心戰鬥機制完全圍繞**「殘夢」**與**「集真赤」**。她打破了傳統角色依賴能量（Energy）釋放終結技的限制，只要隊友頻繁施加負面效果即可快速積攢層數，降下無視弱點屬性的毀滅性打擊。</p>
+            </div>
+            <div class="image-column">
+                <img class="character-img" src="https://upload.wikimedia.org/wikipedia/en/a/a7/Acheron_%22Honkai_Star_Rail%22.png" alt="黃泉 Acheron">
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 / 關鍵屬性成長需求 (Main & Sub Stats Growth) -->
+    <section id="stats" class="content-section">
+        <span class="section-tag">02 / STATS & BUILD PRIORITIES</span>
+        <h2>核心屬性成長配比 (Stats Priority)</h2>
+        <p style="margin-bottom: 20px; color: #a0a0b0;">黃泉不依賴能量恢復（Energy Recharge），主要追求暴擊傷害、攻擊力與暴擊率。</p>
+
+        <!-- 主詞條選擇卡片 -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h4>軀幹 (Body)</h4>
+                <div class="stat-value">CRIT DMG / CRIT Rate</div>
+                <p>優先暴擊傷害（若暴擊率低於 70% 則選暴擊率）</p>
+            </div>
+            <div class="stat-card">
+                <h4>腳部 (Feet)</h4>
+                <div class="stat-value">ATK% / Speed</div>
+                <p>推薦攻擊鞋（配椒丘/花火）；無拉條輔助可選速度鞋 (134+)</p>
+            </div>
+            <div class="stat-card">
+                <h4>位面球 (Sphere)</h4>
+                <div class="stat-value">Lightning DMG / ATK%</div>
+                <p>雷傷球與攻擊球收益相當，優先選擇副詞條優秀者</p>
+            </div>
+            <div class="stat-card">
+                <h4>連結繩 (Rope)</h4>
+                <div class="stat-value">ATK% (攻擊繩)</div>
+                <p>絕對不使用充能繩！黃泉不使用能量機制</p>
+            </div>
+        </div>
+
+        <!-- 副詞條優先順序與畢業目標 -->
+        <div style="background: #0f0d1a; padding: 20px; border-radius: 10px; border: 1px solid #2e1065;">
+            <h4 style="color: #c084fc; margin-bottom: 10px;">副詞條優先度 (Sub-stats Weight):</h4>
+            <p><strong>暴擊傷害 (CRIT DMG) = 暴擊率 (CRIT Rate) &gt; 攻擊力百分比 (ATK%) &gt; 速度 (Speed)</strong></p>
+            <hr style="border-color: #2e1065; margin: 15px 0;">
+            <p><strong>畢業面板參考 (Graduation Goal):</strong> 攻擊力 3800+ | 暴擊率 70%+ | 暴擊傷害 200%+</p>
+        </div>
+    </section>
+
+    <!-- 03 / 光錐與遺器 (全帶圖卡片展示) -->
+    <section id="gear" class="content-section">
+        <span class="section-tag">03 / GEAR & LIGHT CONES</span>
+        <h2>推薦裝備與光錐 (Equipment)</h2>
+
+        <div class="gear-grid">
+            <!-- 專屬光錐 -->
+            <div class="gear-card">
+                <img src="https://static.wikia.nocookie.net/houkai-star-rail/images/5/52/Light_Cone_Along_the_Passing_Shore_Image.png" alt="行於流逝的岸">
+                <span class="tag">專屬光錐 (5★)</span>
+                <h4>行於流逝的岸</h4>
+                <p>提升高額暴擊傷害，且能為敵方施加「泡影」負面狀態，大幅加快黃泉終結技疊層速度。</p>
+            </div>
+
+            <!-- 備選光錐 -->
+            <div class="gear-card">
+                <img src="https://static.wikia.nocookie.net/houkai-star-rail/images/c/c5/Light_Cone_Good_Night_and_Sleep_Well_Image.png" alt="晚安與睡顏">
+                <span class="tag">備選光錐 (4★)</span>
+                <h4>晚安與睡顏</h4>
+                <p>根據敵方負面效果數量獲得高額傷害加成，滿精鍊情況下傷害表現非常優異。</p>
+            </div>
+
+            <!-- 外圈遺器 -->
+            <div class="gear-card">
+                <img src="https://static.wikia.nocookie.net/houkai-star-rail/images/d/da/Item_Pioneer_Diver_of_Dead_Waters.png" alt="死水深淵的死徒">
+                <span class="tag">外圈遺器 (4件套)</span>
+                <h4>死水深淵的死徒</h4>
+                <p>針對受負面效果影響的敵人大幅提升暴擊率與暴擊傷害，為黃泉專屬首選遺器。</p>
+            </div>
+
+            <!-- 內圈飾品 -->
+            <div class="gear-card">
+                <img src="https://static.wikia.nocookie.net/houkai-star-rail/images/b/b3/Item_Izumo_Gensei_and_Takama_Divine_Realm.png" alt="出雲顯世與高天神國">
+                <span class="tag">內圈飾品 (2件套)</span>
+                <h4>出雲顯世與高天神國</h4>
+                <p>隊伍中有同命途（虛無）角色時提供 12% 暴擊率，極度契合黃泉組隊需求。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 / 隊伍搭配 -->
+    <section id="team" class="content-section">
+        <span class="section-tag">04 / TEAM COMPOSITION</span>
+        <h2>最優負面疊層隊伍</h2>
+        <p style="margin-bottom: 20px; color: #a0a0b0;">黃泉天賦需要隊友頻繁施加負面狀態，強烈建議隊伍中至少攜帶 2 位虛無命途隊友以觸發增傷。</p>
+
+        <div class="team-container">
+            <div class="team-member">
+                <img class="avatar" src="https://static.wikia.nocookie.net/houkai-star-rail/images/c/c2/Character_Acheron_Icon.png" alt="黃泉">
+                <span class="member-name">黃泉</span>
+                <span class="member-role">主 DPS (核心輸出)</span>
+            </div>
+            <div class="team-member">
+                <img class="avatar" src="https://static.wikia.nocookie.net/houkai-star-rail/images/d/df/Character_Jiaoqiu_Icon.png" alt="椒丘">
+                <span class="member-name">椒丘</span>
+                <span class="member-role">專屬輔助 (頻繁負面/易傷)</span>
+            </div>
+            <div class="team-member">
+                <img class="avatar" src="https://static.wikia.nocookie.net/houkai-star-rail/images/b/b8/Character_Pela_Icon.png" alt="佩拉">
+                <span class="member-name">佩拉</span>
+                <span class="member-role">群體減防 (高頻施加)</span>
+            </div>
+            <div class="team-member">
+                <img class="avatar" src="https://static.wikia.nocookie.net/houkai-star-rail/images/c/c8/Character_Aventurine_Icon.png" alt="砂金">
+                <span class="member-name">砂金</span>
+                <span class="member-role">生存護盾 / 追擊施加負面</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05 / 人物關係鏈 -->
+    <section id="relations" class="content-section">
+        <span class="section-tag">05 / RELATIONSHIPS</span>
+        <h2>命運交錯的絆羈</h2>
+        
+        <div class="relation-grid">
+            <div class="relation-card">
+                <div class="relation-header">
+                    <img class="relation-avatar" src="https://static.wikia.nocookie.net/houkai-star-rail/images/1/18/Character_Black_Swan_Icon.png" alt="黑天鵝">
+                    <div class="relation-title">
+                        <h4>黑天鵝 (Black Swan)</h4>
+                        <span>憶質舞者 / 記憶</span>
+                    </div>
+                </div>
+                <p>在匹諾康尼的夢境中與黃泉有著深度的記憶交集。黑天鵝曾試圖探尋黃泉過往的記憶，卻觸碰到深不可測的虛無深淵。</p>
+            </div>
+
+            <div class="relation-card">
+                <div class="relation-header">
+                    <img class="relation-avatar" src="https://static.wikia.nocookie.net/houkai-star-rail/images/a/a2/Character_Welt_Icon.png" alt="瓦爾特">
+                    <div class="relation-title">
+                        <h4>瓦爾特·楊 (Welt)</h4>
+                        <span>星穹列車 / 虛無</span>
+                    </div>
+                </div>
+                <p>瓦爾特從黃泉身上察覺到了極其相似的故人影子與世界毀滅的過往，兩人對「虛無」與拯救有著深刻的交談。</p>
+            </div>
+
+            <div class="relation-card">
+                <div class="relation-header">
+                    <img class="relation-avatar" src="https://static.wikia.nocookie.net/houkai-star-rail/images/c/ca/Character_Firefly_Icon.png" alt="流螢">
+                    <div class="relation-title">
+                        <h4>流螢 / 薩姆 (Firefly)</h4>
+                        <span>星核獵手 / 毀滅</span>
+                    </div>
+                </div>
+                <p>在匹諾康尼夢境危機中，黃泉以「刀刃」解開了夢境的輪迴枷鎖，引導流螢完成她自身的使命。</p>
+            </div>
+        </div>
+    </section>
+
+</body>
 </html>
