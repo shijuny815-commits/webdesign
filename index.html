@@ -1,11 +1,222 @@
-<html>
-    <head></head>
-<body>
-<h1>hello!</h1>
-<h3 id="word">nice to meet you!</h3>
-<img id="jpg" src="the herta.jpg" >
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arc Study — Canvas Geometry</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<input type="button" value="add border" onclick="document.getElementById('jpg').style.borderImageWidth='20px soild block'">
-<input type="button" value="change word color" onclick="document.getElementById('word').style.color='blue'">
+    body {
+      background-color: #e6e3d6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 24px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+    }
+    button {
+      display: block;
+      color: aquamarine;
+      color: rgb(0, 0, 0);
+      font-size: 60px;
+      width: 200px;
+      height: 100px;
+    }
+
+  </style>
+</head>
+<body>
+  <button onclick="drawHalfCircleTile(40, 185, 360)">first</button>
+  <button onclick="drawQuarterSectorsTile(40, 185, 360)">2</button>
+  <button onclick="drawThreeQuartersTile(40, 185, 360)">3</button>
+  <button onclick="drawOpenArcsTile(40, 185, 360)">4</button>
+
+  <canvas id="arcStudyCanvas" width="800" height="980"></canvas>
+
+  <script>
+    const canvas = document.getElementById("arcStudyCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Color Palette
+    const COLORS = {
+      bg: "#F4F2E6",
+      teal: "#24443F",
+      peach: "#E7BD99",
+      rust: "#B14E3B",
+      cream: "#F3D79E",
+      coral: "#DD8A6D",
+      terracotta: "#D8836B",
+      offWhite: "#F4EFE0",
+      darkBrown: "#76382B",
+      sand: "#E4D5B3",
+      labelDark: "#4B3B2E",
+      labelLight: "#E8E3D5"
+    };
+
+    // Helper: Draw tile background and bottom-left caption at (x, y)
+    function drawTileBase(x, y, size, bgColor, labelText, labelColor) {
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(x, y, size, size);
+
+      ctx.fillStyle = labelColor;
+      ctx.font = "700 13px 'Helvetica Neue', Helvetica, Arial, sans-serif";
+      ctx.textAlign = "left";
+      ctx.textBaseline = "alphabetic";
+      ctx.fillText(labelText, x + 22, y + size - 22);
+    }
+
+    // 01 / HALF CIRCLE / 180° — anchored at top-left (x, y)
+    function drawHalfCircleTile(x, y, size) {
+      drawTileBase(x, y, size, COLORS.peach, "01 / HALF CIRCLE / 180°", COLORS.labelDark);
+
+      const cx = x + size / 2;
+      const cy = y + size * 0.61;
+      const radius = size * 0.34;
+
+      // Top 180° semicircle
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, Math.PI, 2 * Math.PI);
+      ctx.closePath();
+      ctx.fillStyle = COLORS.rust;
+      ctx.fill();
+
+      // Horizontal baseline underneath
+      ctx.beginPath();
+      ctx.moveTo(cx - radius, cy + 16);
+      ctx.lineTo(cx + radius, cy + 16);
+      ctx.strokeStyle = COLORS.rust;
+      ctx.lineWidth = 3;
+      ctx.stroke();
+    }
+
+    // 02 / QUARTER SECTORS / 90° — anchored at top-left (x, y)
+    function drawQuarterSectorsTile(x, y, size) {
+      drawTileBase(x, y, size, COLORS.teal, "02 / QUARTER SECTORS / 90°", COLORS.labelLight);
+
+      // Large top-left 90° sector
+      const largeOriginX = x + size * 0.215;
+      const largeOriginY = y + size * 0.215;
+      const largeRadius = size * 0.54;
+
+      ctx.beginPath();
+      ctx.moveTo(largeOriginX, largeOriginY);
+      ctx.arc(largeOriginX, largeOriginY, largeRadius, 0, Math.PI / 2);
+      ctx.closePath();
+      ctx.fillStyle = COLORS.cream;
+      ctx.fill();
+
+      // Small bottom-right 90° sector
+      const smallOriginX = x + size * 0.785;
+      const smallOriginY = y + size * 0.805;
+      const smallRadius = size * 0.205;
+
+      ctx.beginPath();
+      ctx.moveTo(smallOriginX, smallOriginY);
+      ctx.arc(smallOriginX, smallOriginY, smallRadius, Math.PI, 1.5 * Math.PI);
+      ctx.closePath();
+      ctx.fillStyle = COLORS.coral;
+      ctx.fill();
+    }
+
+    // 03 / THREE QUARTERS / 270° — anchored at top-left (x, y)
+    function drawThreeQuartersTile(x, y, size) {
+      drawTileBase(x, y, size, COLORS.terracotta, "03 / THREE QUARTERS / 270°", COLORS.labelDark);
+
+      const cx = x + size * 0.5;
+      const cy = y + size * 0.44;
+      const mainRadius = size * 0.315;
+
+      // 270° three-quarter sector (from 0° clockwise to 270°)
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, mainRadius, 0, 1.5 * Math.PI);
+      ctx.closePath();
+      ctx.fillStyle = COLORS.offWhite;
+      ctx.fill();
+
+      // Offset 90° dark brown sector in the top-right cutout
+      const offset = size * 0.042;
+      const smallRadius = size * 0.235;
+
+      ctx.beginPath();
+      ctx.moveTo(cx + offset, cy - offset);
+      ctx.arc(cx + offset, cy - offset, smallRadius, 1.5 * Math.PI, 2 * Math.PI);
+      ctx.closePath();
+      ctx.fillStyle = COLORS.darkBrown;
+      ctx.fill();
+    }
+
+    // 04 / OPEN ARCS / 120° — anchored at top-left (x, y)
+    function drawOpenArcsTile(x, y, size) {
+      drawTileBase(x, y, size, COLORS.sand, "04 / OPEN ARCS / 120°", COLORS.teal);
+
+      const cx = x + size / 2;
+      const cy = y + size * 0.65;
+
+      // 120° span centered at -90° (top): from -150° to -30°
+      const startAngle = (-150 * Math.PI) / 180;
+      const endAngle = (-30 * Math.PI) / 180;
+
+      // Outer thick teal arc
+      ctx.beginPath();
+      ctx.arc(cx, cy, size * 0.31, startAngle, endAngle);
+      ctx.strokeStyle = COLORS.teal;
+      ctx.lineWidth = size * 0.068;
+      ctx.lineCap = "butt";
+      ctx.stroke();
+
+      // Inner terracotta arc
+      ctx.beginPath();
+      ctx.arc(cx, cy, size * 0.185, startAngle, endAngle);
+      ctx.strokeStyle = COLORS.rust;
+      ctx.lineWidth = size * 0.044;
+      ctx.lineCap = "butt";
+      ctx.stroke();
+    }
+
+    // Master Poster Render Function
+    function renderPoster() {
+      // Poster background
+      ctx.fillStyle = COLORS.bg;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const marginX = 40;
+      const gridTopY = 185;
+      const tileSize = 360;
+
+      // Header Typography
+      ctx.fillStyle = COLORS.teal;
+      ctx.textAlign = "left";
+      // Draw the 4 tiles using exact (x, y) top-left coordinates
+      //drawHalfCircleTile(40, 185, 360);                       // Top-Left (40, 185)
+      //drawQuarterSectorsTile(marginX , gridTopY, tileSize);        // Top-Right (400, 185)
+      //drawThreeQuartersTile(marginX, gridTopY + tileSize, tileSize);         // Bottom-Left (40, 545)
+      //drawOpenArcsTile(marginX + tileSize, gridTopY + tileSize, tileSize);   // Bottom-Right (400, 545)
+
+      // Footer Typography
+      const footerTopY = gridTopY + tileSize * 2 + 58;
+      ctx.fillStyle = COLORS.teal;
+      ctx.font = "800 16px 'Helvetica Neue', Helvetica, Arial, sans-serif";
+      ctx.fillText("CIRCULAR THINKING", marginX, footerTopY);
+
+      ctx.font = "400 15px 'Helvetica Neue', Helvetica, Arial, sans-serif";
+      ctx.fillText("Canvas geometry / beginPath · arc · fill · stroke", marginX, footerTopY + 30);
+    }
+
+    renderPoster();
+  </script>
 </body>
 </html>
